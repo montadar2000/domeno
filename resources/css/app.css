@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+    --color-ivory: #f6f1e4;
+    --color-gold: #e7c98a;
+    --color-felt: #07140e;
+}
+
+@layer base {
+    html {
+        font-family: var(--font-sans);
+        overflow-x: clip;
+    }
+
+    body {
+        overflow-x: clip;
+        color: var(--color-ivory);
+    }
+
+    input[type='number'] {
+        appearance: textfield;
+        -moz-appearance: textfield;
+    }
+
+    input[type='number']::-webkit-outer-spin-button,
+    input[type='number']::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.felt {
+    background-color: var(--color-felt);
+    background-image:
+        radial-gradient(900px 480px at 50% -10%, rgba(231, 201, 138, 0.18), transparent 58%),
+        radial-gradient(700px 420px at 100% 100%, rgba(18, 92, 58, 0.42), transparent 52%),
+        radial-gradient(540px 360px at 0% 80%, rgba(4, 28, 18, 0.85), transparent 50%),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 7px);
+}
+
+.glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(22px);
+}
+
+.glass-gold {
+    border-color: rgba(231, 201, 138, 0.45);
+    box-shadow:
+        0 0 0 1px rgba(231, 201, 138, 0.18),
+        0 0 42px rgba(231, 201, 138, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.winner-card {
+    animation: winner-rise 420ms ease-out;
+}
+
+@keyframes winner-rise {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
