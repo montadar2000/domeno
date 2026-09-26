@@ -20,8 +20,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if ($this->app->environment('production')) {
-            URL::forceScheme('https');
+        if ($this->app->runningInConsole()) {
+            return;
         }
+
+        $root = request()->getSchemeAndHttpHost();
+
+        URL::forceRootUrl($root);
+        URL::forceScheme(request()->getScheme());
+        URL::useAssetOrigin($root);
     }
 }
